@@ -10,10 +10,17 @@ module Challenge
 
   class Configuration
     attr_reader :importmap
+    attr_accessor :tailwind_content
 
     def initialize
       @importmap = Importmap::Map.new
       @importmap.draw(Engine.root.join("config/importmap.rb"))
+      @tailwind_content = [
+        "#{Challenge::Engine.root}/app/views/**/*",
+        "#{Challenge::Engine.root}/app/helpers/**/*",
+        "#{Challenge::Engine.root}/app/controllers/**/*",
+        "#{Challenge::Engine.root}/app/javascript/**/*.js"
+      ]
     end
   end
 
